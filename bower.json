@@ -14,7 +14,6 @@
   "authors": [
     "Ben Fletcher <bjfletcher@gmail.com>"
   ],
-  "license": "MIT",
   "ignore": [
     "**/.*",
     "node_modules",
