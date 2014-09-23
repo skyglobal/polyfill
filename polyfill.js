@@ -1,123 +1,61 @@
-if (document.getElementsByClassName  === 'undefined') {
 
-    document.getElementsByClassName = function (search) {
-        var d = document, elements, pattern, i, results = [];
-        if (d.querySelectorAll) { // IE8
-            return d.querySelectorAll("." + search);
+// from Jonathan Neal's Gist https://gist.github.com/jonathantneal/3748027
+!window.addEventListener && (function (WindowPrototype, DocumentPrototype, ElementPrototype, addEventListener, removeEventListener, dispatchEvent, registry) {
+	WindowPrototype[addEventListener] = DocumentPrototype[addEventListener] = ElementPrototype[addEventListener] = function (type, listener) {
+		var target = this;
+ 
+        if (type === 'DOMContentLoaded') {
+            type = 'readystatechange';
         }
-        if (d.evaluate) { // IE6, IE7
-            pattern = ".//*[contains(concat(' ', @class, ' '), ' " + search + " ')]";
-            elements = d.evaluate(pattern, d, null, 0, null);
-            while ((i = elements.iterateNext())) {
-                results.push(i);
-            }
-        } else {
-            elements = d.getElementsByTagName("*");
-            pattern = new RegExp("(^|\\s)" + search + "(\\s|$)");
-            for (i = 0; i < elements.length; i++) {
-                if (pattern.test(elements[i].className)) {
-                    results.push(elements[i]);
-                }
-            }
-        }
-        return results;
+                    
+		registry.unshift([target, type, listener, function (event) {
+			event.currentTarget = target;
+			event.preventDefault = function () { event.returnValue = false };
+			event.stopPropagation = function () { event.cancelBubble = true };
+			event.target = event.srcElement || target;
+ 
+			listener.call(target, event);
+		}]);
+ 
+		this.attachEvent("on" + type, registry[0][3]);
+	};
+ 
+	WindowPrototype[removeEventListener] = DocumentPrototype[removeEventListener] = ElementPrototype[removeEventListener] = function (type, listener) {
+		for (var index = 0, register; register = registry[index]; ++index) {
+			if (register[0] == this && register[1] == type && register[2] == listener) {
+				return this.detachEvent("on" + type, registry.splice(index, 1)[0][3]);
+			}
+		}
+	};
+ 
+	WindowPrototype[dispatchEvent] = DocumentPrototype[dispatchEvent] = ElementPrototype[dispatchEvent] = function (eventObject) {
+		return this.fireEvent("on" + eventObject.type, eventObject);
+	};
+})(Window.prototype, HTMLDocument.prototype, Element.prototype, "addEventListener", "removeEventListener", "dispatchEvent", []);
+
+
+// ES5 15.4.4.18 Array.prototype.forEach ( callbackfn [ , thisArg ] )
+// From https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array/forEach
+if (!Array.prototype.forEach) {
+  Array.prototype.forEach = function (fun /*, thisp */) {
+    if (this === void 0 || this === null) { throw TypeError(); }
+
+    var t = Object(this);
+    var len = t.length >>> 0;
+    if (typeof fun !== "function") { throw TypeError(); }
+
+    var thisp = arguments[1], i;
+    for (i = 0; i < len; i++) {
+      if (i in t) {
+        fun.call(thisp, t[i], i, t);
+      }
     }
-};
-
-if(typeof document.querySelector === 'undefined') {
-
-        document.querySelectorAll = function (selectors) {
-            var style = document.createElement('style'), elements = [], element;
-            document.documentElement.firstChild.appendChild(style);
-            document._qsa = [];
-
-            style.styleSheet.cssText = selectors + '{x-qsa:expression(document._qsa && document._qsa.push(this))}';
-            window.scrollBy(0, 0);
-            style.parentNode.removeChild(style);
-
-            while (document._qsa.length) {
-                element = document._qsa.shift();
-                element.style.removeAttribute('x-qsa');
-                elements.push(element);
-            }
-            document._qsa = null;
-            return elements;
-        };
-
-        document.querySelector = function (selectors) {
-            var elements = document.querySelectorAll(selectors);
-            return (elements.length) ? elements[0] : null;
-        };
-
-};
-if (!document.addEventListener) {
-    document.addEventListener = function(eventName, handler) {
-        if (eventName === 'DOMContentLoaded') {
-            document.attachEvent('onreadystatechange', function() {
-                if (document.readyState === 'interactive' || document.readyState === 'complete') {
-                    handler();
-                 }
-            });
-        } else {
-            document.attachEvent('on' + eventName, handler);
-        }
-    };
+  };
 }
 
-if (window.Element && !Element.prototype.addEventListener) {
-    Element.prototype.addEventListener = function(eventName, handler) {
-        this.attachEvent('on' + eventName, handler);
-    };
-}
-
-if (window.Element && !Element.prototype.removeEventListener) {
-    Element.prototype.removeEventListener = function(eventName, handler) {
-        this.detachEvent('on' + eventName, handler);
-    };
-}
-
-if (!window.Element) {
-    // IE8 and below
-    var createElement = document.createElement;
-    document.createElement = function(tagName) {
-        var el = createElement(tagName);
-        el.addEventListener = function(eventName, handler) {
-            this.attachEvent('on' + eventName, handler);
-        }
-        el.removeEventListener = function(eventName, handler) {
-            this.detachEvent('on' + eventName, handler);
-        }
-        return el;
-    }
-    var getElementById = document.getElementById;
-    document.getElementById = function(id) {
-        var el = getElementById(id);
-        el.addEventListener = function(eventName, handler) {
-            this.attachEvent('on' + eventName, handler);
-        }
-        el.removeEventListener = function(eventName, handler) {
-            this.detachEvent('on' + eventName, handler);
-        }
-        return el;
-    }
-    var getElementByTagName = document.getElementByTagName;
-    document.getElementByTagName = function(tagName) {
-        var el = getElementByTagName(tagName);
-        el.addEventListener = function(eventName, handler) {
-            this.attachEvent('on' + eventName, handler);
-        }
-        el.removeEventListener = function(eventName, handler) {
-            this.detachEvent('on' + eventName, handler);
-        }
-        return el;
-    }
-}
-// Adding trim to string
-if(typeof String.prototype.trim !== 'function') {
+if (typeof String.prototype.trim !== 'function') {
     String.prototype.trim = function() {
         return this.replace(/^\s+|\s+$/g, '');
     };
 }
-
-
 
