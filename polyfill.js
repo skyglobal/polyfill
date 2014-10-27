@@ -1,4 +1,11 @@
 
+if (typeof String.prototype.trim !== 'function') {
+    String.prototype.trim = function() {
+        return this.replace(/^\s+|\s+$/g, '');
+    };
+}
+
+
 // from Jonathan Neal's Gist https://gist.github.com/jonathantneal/3748027
 !window.addEventListener && (function (WindowPrototype, DocumentPrototype, ElementPrototype, addEventListener, removeEventListener, dispatchEvent, registry) {
 	WindowPrototype[addEventListener] = DocumentPrototype[addEventListener] = ElementPrototype[addEventListener] = function (type, listener) {
@@ -52,10 +59,4 @@ if (!Array.prototype.forEach) {
     }
   };
 }
-
-if (typeof String.prototype.trim !== 'function') {
-    String.prototype.trim = function() {
-        return this.replace(/^\s+|\s+$/g, '');
-    };
-}
-
+window.hasOwnProperty = window.hasOwnProperty || Object.prototype.hasOwnProperty;
