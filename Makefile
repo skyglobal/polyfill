@@ -1,3 +1,3 @@
 build:
-	rm -f ./polyfill.js
-	cat ./src/*.js > ./polyfill.js
+	rm -f .dist/polyfill.js
+	cat ./src/*.js > ./dist/polyfill.js

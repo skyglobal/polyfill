@@ -1,6 +1,6 @@
 # Polyfill
 
-"Provides facilities that are not built into a web browser. It implements technology that a developer expects the browser to provide natively providing a more uniform API landscape." -- Unknown
+> "Provides facilities that are not built into a web browser. It implements technology that a developer expects the browser to provide natively providing a more uniform API landscape." -- Unknown
 
 Goal: You should code using standard JavaScript as normal as you would on any non-IE browser, and this polyfill should fill in the rest for you by magic! :)
 
