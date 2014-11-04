@@ -10,16 +10,18 @@ To keep the polyfill as small as possible, we're only supporting from IE8 and up
 
 ## Usage
 
-If you'd like all the polyfill, you can just include the `polyfill.js` (all the individual `.js` files in the `src` folder are concatenated into this one `.js` file).  Otherwise, you can cherrypick from the individual files/functions in `src`.
+### As JS (via a CDN)
 
-## Bower
+http://web-toolkit.global.sky.com/components/polyfill/0.0.6/polyfill.js
 
-You can also pull in the polyfill code using Bower:
+## As a JS component locally
 
-`$ bower install --save-dev skyglobal-toolkit-polyfill`
+`bower install --save-dev bskyb-polyfill`
 
-then include `bower_components/skyglobal-toolkit-polyfill/polyfill.js` in your project's build/deploy script.
+then include `bower_components/bskyb-polyfill/dist/js/polyfill.js` in your project's build/deploy script.
 
 ## Contribution
 
-Add code to `/src` and then just run `Make` to generate the all-accompanying `polyfill.js`.
+Web components depends on collaboration between developers across Sky. Contributions of any size are actively encouraged.
+
+[Read More >](CONTRIBUTING.md)

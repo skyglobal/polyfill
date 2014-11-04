@@ -94,8 +94,8 @@ gulp.task('create-site', function() {
 });
 
 gulp.task('aws', function() {
-    gulp.src(paths.site.css + '/buttons.css')
-        .pipe(aws_s3.upload({ path:'components/buttons/' + pkg.version + '/'} ));
+    gulp.src(paths.dist.js + '/*.js')
+        .pipe(aws_s3.upload({ path:'components/' + pkg.name.replace('bskyb-','') + '/' + pkg.version + '/'} ));
 });
 
 gulp.task('run-release-bower', function(cb) {
