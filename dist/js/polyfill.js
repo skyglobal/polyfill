@@ -34,8 +34,7 @@ if (!Array.prototype.indexOf){
     };
 }
 
-function functionBind(){
-    if (typeof Function.prototype.bind !=='undefined') { return; }
+if (!Function.prototype.bind) {
     Function.prototype.bind = function (oThis) {
         var aArgs = Array.prototype.slice.call(arguments, 1),
             fToBind = this,

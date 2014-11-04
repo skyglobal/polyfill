@@ -70,7 +70,7 @@ gulp.task('watch', function() {
 });
 
 gulp.task('build', function(cb) {
-    return runSequence('bower', ['sass', 'create-site'],
+    return runSequence('bower', ['sass', 'js', 'create-site'],
         cb
     );
 });
