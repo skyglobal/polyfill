@@ -2,7 +2,7 @@
   "name": "bskyb-polyfill",
   "version": "0.0.7",
   "description": "Provides facilities that are not built into a web browser. It implements technology that a developer expects the browser to provide natively providing a more uniform API landscape.",
-  "main": "dist/polyfill.js",
+  "main": "dist/js/main.min.js",
   "moduleType": [
     "globals"
   ],
@@ -18,5 +18,9 @@
   "ignore": [
     "**/*",
     "!dist/**/*"
-  ]
+  ],
+  "devDependencies": {
+    "bskyb-typography": "~0.0.1",
+    "bskyb-colours": "~0.0.7"
+  }
 }
