@@ -1,5 +1,5 @@
-@import 'bskyb-colours/dist/scss/main';
-@import 'bskyb-typography/dist/scss/main';
+@import 'bskyb-colours/dist/scss/colours';
+@import 'bskyb-typography/dist/scss/typography';
 
 
 /* Common demo Sass here */
@@ -9,6 +9,7 @@
 .demo-updated {
   display: block;
   font-size: 0.3em;
+  margin-bottom: 20px;
 }
 
 
