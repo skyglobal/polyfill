@@ -20,7 +20,7 @@
     "!dist/**/*"
   ],
   "devDependencies": {
-    "bskyb-typography": "~0.0.3",
+    "bskyb-typography": "~0.0.4",
     "bskyb-colours": "~0.0.8"
   }
 }
