@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.0.10
+
+  * Added .toolkit.js file wrapper. only needed for the web-toolkit. so please ignore!
+  
 ## 0.0.8
 
   * update distributed directories to follow component convention
