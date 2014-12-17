@@ -12,7 +12,7 @@ To keep the polyfill as small as possible, we're only supporting from IE8 and up
 
 ### As JS (via a CDN)
 
-http://web-toolkit.global.sky.com/components/polyfill/0.0.110/js/polyfill.js
+http://web-toolkit.global.sky.com/components/polyfill/0.1.010/js/polyfill.js
 
 ## As a JS component locally
 

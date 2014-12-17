@@ -8,7 +8,9 @@ require('./polyfills/whichIE')();
 
 
 if (typeof toolkit === "undefined") window.skyComponents = {};
-skyComponents.polyfill = undefined;
+skyComponents.polyfill = {
+
+};
 },{"./polyfills/Array":3,"./polyfills/Function":4,"./polyfills/String":5,"./polyfills/events":6,"./polyfills/hasOwnProperty":7,"./polyfills/whichIE":8}],2:[function(require,module,exports){
 var polyfill = require('./polyfill');
 
