@@ -5,6 +5,10 @@ require('./polyfills/Function')();
 require('./polyfills/hasOwnProperty')();
 require('./polyfills/String')();
 require('./polyfills/whichIE')();
+
+
+if (typeof toolkit === "undefined") window.skyComponents = {};
+skyComponents.polyfill = undefined;
 },{"./polyfills/Array":2,"./polyfills/Function":3,"./polyfills/String":4,"./polyfills/events":5,"./polyfills/hasOwnProperty":6,"./polyfills/whichIE":7}],2:[function(require,module,exports){
 
 module.exports = function(){

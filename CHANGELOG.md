@@ -1,9 +1,13 @@
 # Change Log
 
+## 0.1.0
+
+  * Updated .toolkit.js to .requirejs.js to better describe its function.
+
 ## 0.0.10
 
   * Added .toolkit.js file wrapper. only needed for the web-toolkit. so please ignore!
-  
+
 ## 0.0.8
 
   * update distributed directories to follow component convention

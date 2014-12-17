@@ -5,17 +5,19 @@ require('./polyfills/Function')();
 require('./polyfills/hasOwnProperty')();
 require('./polyfills/String')();
 require('./polyfills/whichIE')();
+
+
+if (typeof toolkit === "undefined") window.skyComponents = {};
+skyComponents.polyfill = undefined;
 },{"./polyfills/Array":3,"./polyfills/Function":4,"./polyfills/String":5,"./polyfills/events":6,"./polyfills/hasOwnProperty":7,"./polyfills/whichIE":8}],2:[function(require,module,exports){
 var polyfill = require('./polyfill');
 
-if (typeof toolkit === "undefined") window.toolkit = {};
 if (typeof window.define === "function" && window.define.amd) {
-    define('bower_components/bskyb-polyfill/dist/js/polyfill.toolkit', [], function() {
+    define('bower_components/bskyb-polyfill/dist/js/polyfill.requirejs', [], function() {
         'use strict';
         return polyfill;
     });
 } else {
-    toolkit.polyfill = polyfill;
 }
 },{"./polyfill":1}],3:[function(require,module,exports){
 
