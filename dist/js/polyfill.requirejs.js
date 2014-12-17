@@ -7,7 +7,7 @@ require('./polyfills/String')();
 require('./polyfills/whichIE')();
 
 
-if (typeof toolkit === "undefined") window.skyComponents = {};
+if (typeof skyComponents === "undefined") window.skyComponents = {};
 skyComponents.polyfill = {
 
 };
@@ -19,7 +19,6 @@ if (typeof window.define === "function" && window.define.amd) {
         'use strict';
         return polyfill;
     });
-} else {
 }
 },{"./polyfill":1}],3:[function(require,module,exports){
 

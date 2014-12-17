@@ -5,5 +5,4 @@ if (typeof window.define === "function" && window.define.amd) {
         'use strict';
         return polyfill;
     });
-} else {
 }

@@ -7,7 +7,7 @@ require('./polyfills/String')();
 require('./polyfills/whichIE')();
 
 
-if (typeof toolkit === "undefined") window.skyComponents = {};
+if (typeof skyComponents === "undefined") window.skyComponents = {};
 skyComponents.polyfill = {
 
 };
