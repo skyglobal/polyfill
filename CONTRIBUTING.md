@@ -9,6 +9,7 @@ We encourage small change pull requests, the smaller the change the quicker and 
 To build the toolkit locally, you'll need to install:
  * [node.js](http://nodejs.org),
  * [Gulp](http://gulpjs.com),
+ * [Bower](http://bower.io)
 
 
 ## Workflow
@@ -34,7 +35,21 @@ If you would like the feature to go live sooner, mention this in the comments/co
 ## Running Locally
 
  * `gulp serve` :  Run server on port 3456
- 
+
+## Test Your Changes
+
+ * `gulp test` : Run the tests once and produce a code coverage report
+ * `gulp test:tdd` : Run the tests while making changes
+
+## Working with dependencies
+
+If you want to make changes to the bower dependencies, you can clone them down from [here](http://github.com/skyglobal) and do the following.
+
+ * `cd some-bower-dependency/`
+ * `bower link`
+ * `cd {{ component }}/`
+ * `bower link some-bower-dependency`
+
 ## Releasing (admin only)
 
 `gulp release`
