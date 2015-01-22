@@ -3,6 +3,7 @@ require('./polyfills/Array')();
 require('./polyfills/events')();
 require('./polyfills/Function')();
 require('./polyfills/hasOwnProperty')();
+require('./polyfills/Object')();
 require('./polyfills/String')();
 require('./polyfills/whichIE')();
 
@@ -11,7 +12,8 @@ if (typeof skyComponents === "undefined") window.skyComponents = {};
 skyComponents.polyfill = {
 
 };
-},{"./polyfills/Array":2,"./polyfills/Function":3,"./polyfills/String":4,"./polyfills/events":5,"./polyfills/hasOwnProperty":6,"./polyfills/whichIE":7}],2:[function(require,module,exports){
+
+},{"./polyfills/Array":2,"./polyfills/Function":3,"./polyfills/Object":4,"./polyfills/String":5,"./polyfills/events":6,"./polyfills/hasOwnProperty":7,"./polyfills/whichIE":8}],2:[function(require,module,exports){
 
 module.exports = function(){
 
@@ -70,6 +72,51 @@ module.exports = function(){
     }
 };
 },{}],4:[function(require,module,exports){
+// From https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys
+module.exports = function() {
+    if (!Object.keys) {
+        Object.keys = (function() {
+            'use strict';
+            var hasOwnProperty = Object.prototype.hasOwnProperty,
+            hasDontEnumBug = !({ toString: null }).propertyIsEnumerable('toString'),
+            dontEnums = [
+            'toString',
+            'toLocaleString',
+            'valueOf',
+            'hasOwnProperty',
+            'isPrototypeOf',
+            'propertyIsEnumerable',
+            'constructor'
+            ],
+            dontEnumsLength = dontEnums.length;
+
+            return function(obj) {
+                if (typeof obj !== 'object' && (typeof obj !== 'function' || obj === null)) {
+                    throw new TypeError('Object.keys called on non-object');
+                }
+
+                var result = [], prop, i;
+
+                for (prop in obj) {
+                    if (hasOwnProperty.call(obj, prop)) {
+                        result.push(prop);
+                    }
+                }
+
+                if (hasDontEnumBug) {
+                    for (i = 0; i < dontEnumsLength; i++) {
+                        if (hasOwnProperty.call(obj, dontEnums[i])) {
+                            result.push(dontEnums[i]);
+                        }
+                    }
+                }
+                return result;
+            };
+        }());
+    }
+}
+
+},{}],5:[function(require,module,exports){
 
 module.exports = function() {
 
@@ -86,7 +133,7 @@ module.exports = function() {
     }
 
 }
-},{}],5:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 module.exports = function(){
 
     // from Jonathan Neal's Gist https://gist.github.com/jonathantneal/3748027
@@ -125,12 +172,12 @@ module.exports = function(){
 
 
 };
-},{}],6:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 
 module.exports = function() {
     window.hasOwnProperty = window.hasOwnProperty || Object.prototype.hasOwnProperty;
 }
-},{}],7:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 
 module.exports = function() {
 
