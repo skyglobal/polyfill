@@ -20,6 +20,7 @@
     "!dist/**/*"
   ],
   "devDependencies": {
+    "bskyb-grid": "~0.1.0",
     "bskyb-typography": "~0.1.0",
     "bskyb-colours": "~0.1.0"
   }

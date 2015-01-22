@@ -4,21 +4,17 @@
 
 Goal: You should code using standard JavaScript as normal as you would on any non-IE browser, and this polyfill should fill in the rest for you by magic! :)
 
-## Support Browsers
+## Quick-Start
 
-To keep the polyfill as small as possible, we're only supporting from IE8 and upward.
+Include the Polyfill assets in your project either as **Static Resources**
 
-## Usage
+```html
+<script type="text/javascript" src="http://web-toolkit.global.sky.com/components/polyfill/0.1.0/js/polyfill.min.js"></script>
+```
 
-### As JS (via a CDN)
+or alternatively, **Via Bower**
 
-http://web-toolkit.global.sky.com/components/polyfill/0.1.0/js/polyfill.js
-
-## As a JS component locally
-
-`bower install --save-dev bskyb-polyfill`
-
-then include `bower_components/bskyb-polyfill/dist/js/polyfill.js` in your project's build/deploy script.
+ * Run: `bower install --save-dev bskyb-polyfill`
 
 ## Contribution
 
