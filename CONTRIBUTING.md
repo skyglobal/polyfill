@@ -39,7 +39,6 @@ If you would like the feature to go live sooner, mention this in the comments/co
 ## Test Your Changes
 
  * `gulp test` : Run the tests once and produce a code coverage report
- * `gulp test:tdd` : Run the tests while making changes
 
 ## Working with dependencies
 
@@ -58,4 +57,4 @@ This will automatically bump the 'patch' section of the version number.
 
 To bump a different area of the version number you can also use `major|minor|patch|prerelease` e.g. :
 
-`gulp release --version prerelease`
+`gulp release --version=prerelease`

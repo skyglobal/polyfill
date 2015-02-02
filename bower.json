@@ -17,7 +17,8 @@
   ],
   "ignore": [
     "**/*",
-    "!dist/**/*"
+    "!dist/**/*",
+    "!src/**/*"
   ],
   "devDependencies": {
     "bskyb-grid": "~0.1.0",
