@@ -6,8 +6,7 @@ require('./polyfills/Object')();
 require('./polyfills/String')();
 require('./polyfills/whichIE')();
 
+module.exports = {}
 
 if (typeof skyComponents === "undefined") window.skyComponents = {};
-skyComponents.polyfill = {
-
-};
+skyComponents.polyfill = module.exports;

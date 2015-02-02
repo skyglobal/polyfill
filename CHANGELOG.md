@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.2.0
+
+  * Updated to distribute code under `scripts` and `styles` directories rather than js and css/scss
+
 ## 0.1.0
 
   * Updated .toolkit.js to .requirejs.js to better describe its function.
