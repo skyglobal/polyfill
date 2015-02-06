@@ -18,6 +18,6 @@ or alternatively, **Via Bower**
 
 ## Contribution
 
-Web components depends on collaboration between developers across Sky. Contributions of any size are actively encouraged.
+Components depends on collaboration between developers. Contributions of any size are actively encouraged.
 
-[Read More >](CONTRIBUTING.md)
+To see how to build this component locally, read the [contribution guidelines](CONTRIBUTING.md).

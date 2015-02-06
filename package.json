@@ -8,7 +8,7 @@
   "devDependencies": {
     "findup-sync": "^0.2.1",
     "gulp": "^3.8.9",
-    "component-helper": "~0.8.0"
+    "component-helper": "~0.8.8"
   },
   "engines": {
     "node": "0.10.31"

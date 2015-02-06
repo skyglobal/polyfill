@@ -7,11 +7,10 @@ require('./polyfills/Object')();
 require('./polyfills/String')();
 require('./polyfills/whichIE')();
 
+module.exports = {}
 
 if (typeof skyComponents === "undefined") window.skyComponents = {};
-skyComponents.polyfill = {
-
-};
+skyComponents.polyfill = module.exports;
 
 },{"./polyfills/Array":3,"./polyfills/Function":4,"./polyfills/Object":5,"./polyfills/String":6,"./polyfills/events":7,"./polyfills/hasOwnProperty":8,"./polyfills/whichIE":9}],2:[function(require,module,exports){
 var polyfill = require('./polyfill');
