@@ -1,5 +1,9 @@
 # Change Log
 
+## 0.2.3
+
+ * Added : `.classList` polyfill
+
 ## 0.2.1
 
   * Updated dependencies
