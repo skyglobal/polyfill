@@ -1,4 +1,5 @@
 require('./polyfills/Array')();
+require('./polyfills/Element')();
 require('./polyfills/events')();
 require('./polyfills/Function')();
 require('./polyfills/hasOwnProperty')();
