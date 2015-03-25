@@ -7,13 +7,14 @@ require('./polyfills/hasOwnProperty')();
 require('./polyfills/Object')();
 require('./polyfills/String')();
 require('./polyfills/whichIE')();
+require('./polyfills/pageYOffset.js')();
 
-module.exports = {}
+module.exports = {};
 
 if (typeof skyComponents === "undefined") window.skyComponents = {};
 skyComponents.polyfill = module.exports;
 
-},{"./polyfills/Array":3,"./polyfills/Element":4,"./polyfills/Function":5,"./polyfills/Object":6,"./polyfills/String":7,"./polyfills/events":8,"./polyfills/hasOwnProperty":9,"./polyfills/whichIE":10}],2:[function(require,module,exports){
+},{"./polyfills/Array":3,"./polyfills/Element":4,"./polyfills/Function":5,"./polyfills/Object":6,"./polyfills/String":7,"./polyfills/events":8,"./polyfills/hasOwnProperty":9,"./polyfills/pageYOffset.js":10,"./polyfills/whichIE":11}],2:[function(require,module,exports){
 var polyfill = require('./polyfill');
 
 if (typeof window.define === "function" && window.define.amd) {
@@ -431,6 +432,15 @@ module.exports = function() {
     window.hasOwnProperty = window.hasOwnProperty || Object.prototype.hasOwnProperty;
 }
 },{}],10:[function(require,module,exports){
+module.exports = function() {
+    if (window.pageYOffset === undefined) {
+        Object.defineProperty(window, "pageYOffset", {
+            get : function () { return this.document.documentElement.scrollTop; }
+        });
+    }
+};
+
+},{}],11:[function(require,module,exports){
 
 module.exports = function() {
 
