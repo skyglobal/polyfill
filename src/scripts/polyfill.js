@@ -6,8 +6,9 @@ require('./polyfills/hasOwnProperty')();
 require('./polyfills/Object')();
 require('./polyfills/String')();
 require('./polyfills/whichIE')();
+require('./polyfills/pageYOffset.js')();
 
-module.exports = {}
+module.exports = {};
 
 if (typeof skyComponents === "undefined") window.skyComponents = {};
 skyComponents.polyfill = module.exports;
