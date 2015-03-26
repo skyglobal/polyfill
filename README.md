@@ -9,7 +9,7 @@ Goal: You should code using standard JavaScript as normal as you would on any no
 Include the Polyfill assets in your project either as **Static Resources**
 
 ```html
-<script type="text/javascript" src="http://web-toolkit.global.sky.com/components/polyfill/0.2.4/js/polyfill.min.js"></script>
+<script type="text/javascript" src="http://web-toolkit.global.sky.com/components/polyfill/0.2.5/js/polyfill.min.js"></script>
 ```
 
 or alternatively, **Via Bower**
