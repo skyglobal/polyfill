@@ -52,7 +52,14 @@ module.exports = function(){
             return -1;
         };
     }
+
+    if (!Array.isArray) {
+        Array.isArray = function(arg) {
+            return Object.prototype.toString.call(arg) === '[object Array]';
+        };
+    }
 };
+
 },{}],3:[function(require,module,exports){
 /*
  * classList.js: Cross-browser full element.classList implementation.

@@ -35,4 +35,10 @@ module.exports = function(){
             return -1;
         };
     }
+
+    if (!Array.isArray) {
+        Array.isArray = function(arg) {
+            return Object.prototype.toString.call(arg) === '[object Array]';
+        };
+    }
 };
