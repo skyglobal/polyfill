@@ -6,7 +6,7 @@ require('./polyfills/hasOwnProperty')();
 require('./polyfills/Object')();
 require('./polyfills/String')();
 require('./polyfills/whichIE')();
-require('./polyfills/pageYOffset.js')();
+require('./polyfills/pageOffset.js')();
 
 module.exports = {};
 
