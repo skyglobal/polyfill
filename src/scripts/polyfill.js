@@ -8,8 +8,8 @@ require('./polyfills/String')();
 require('./polyfills/whichIE')();
 require('./polyfills/pageOffset.js')();
 require('./polyfills/rAF.js')();
-require('es5-shim')();
-require('es5-sham')();
+require('./es5-shim/es5-shim.js')();
+require('./es5-shim/es5-sham.js')();
 
 module.exports = {};
 
