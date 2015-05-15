@@ -45,11 +45,12 @@ module.exports = function(){
         };
     }
     */
-
+   
+   /* INCLUDED IN ES5-SHIM
     // Production steps of ECMA-262, Edition 5, 15.4.4.21
     // Reference: http://es5.github.io/#x15.4.4.21
     if (!Array.prototype.reduce) {
-      Array.prototype.reduce = function(callback /*, initialValue*/) {
+      Array.prototype.reduce = function(callback) {
         'use strict';
         if (this == null) {
           throw new TypeError('Array.prototype.reduce called on null or undefined');
@@ -76,7 +77,7 @@ module.exports = function(){
         }
         return value;
       };
-    }
+    }*/
     
     /* INCLUDED IN ES5-SHIM
     // Production steps of ECMA-262, Edition 5, 15.4.4.19
@@ -169,8 +170,8 @@ module.exports = function(){
       };
     }*/
 
-    if (!Array.prototype.filter) {
-      Array.prototype.filter = function(fun/*, thisArg*/) {
+    /*if (!Array.prototype.filter) {
+      Array.prototype.filter = function(fun) {
         'use strict';
 
         if (this === void 0 || this === null) {
@@ -202,5 +203,5 @@ module.exports = function(){
 
         return res;
       };
-    }
+    }*/
 };
