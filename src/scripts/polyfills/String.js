@@ -18,7 +18,7 @@ module.exports = function() {
                 var compliantExecNpcg = typeof (/()??/).exec('')[1] === 'undefined';
                 // NPCG: nonparticipating capturing group
 
-                StringPrototype.split = function(separator, limit) {
+                String.prototype.split = function(separator, limit) {
                     var string = this;
                     if ( typeof separator === 'undefined' && limit === 0) {
                         return [];
@@ -104,7 +104,7 @@ module.exports = function() {
         // elements.
         // "0".split(undefined, 0) -> []
     } else if ('0'.split(void 0, 0).length) {
-        StringPrototype.split = function split(separator, limit) {
+        String.prototype.split = function split(separator, limit) {
             if ( typeof separator === 'undefined' && limit === 0) {
                 return [];
             }
