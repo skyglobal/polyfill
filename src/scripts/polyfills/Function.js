@@ -1,6 +1,7 @@
 
 module.exports = function(){
-
+    
+    /* INCLUDED IN ES5-SHIM
     if (!Function.prototype.bind) {
         Function.prototype.bind = function (oThis) {
             var aArgs = Array.prototype.slice.call(arguments, 1),
@@ -14,5 +15,5 @@ module.exports = function(){
             fBound.prototype = new FNOP();
             return fBound;
         };
-    }
+    }*/
 };
