@@ -8,6 +8,7 @@ require('./polyfills/String')();
 require('./polyfills/whichIE')();
 require('./polyfills/pageOffset.js')();
 require('./polyfills/rAF.js')();
+require('./polyfills/Date.js')();
 
 module.exports = {};
 
