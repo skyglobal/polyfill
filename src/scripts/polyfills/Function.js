@@ -1,4 +1,3 @@
-
 module.exports = function(){
     
     /* INCLUDED IN ES5-SHIM

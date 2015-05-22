@@ -8,13 +8,14 @@ require('./polyfills/Object')();
 require('./polyfills/String')();
 require('./polyfills/whichIE')();
 require('./polyfills/pageOffset.js')();
+require('./polyfills/rAF.js')();
 
 module.exports = {};
 
 if (typeof skyComponents === "undefined") window.skyComponents = {};
 skyComponents.polyfill = module.exports;
 
-},{"./polyfills/Array":2,"./polyfills/Element":3,"./polyfills/Function":4,"./polyfills/Object":5,"./polyfills/String":6,"./polyfills/events":7,"./polyfills/hasOwnProperty":8,"./polyfills/pageOffset.js":9,"./polyfills/whichIE":10}],2:[function(require,module,exports){
+},{"./polyfills/Array":2,"./polyfills/Element":3,"./polyfills/Function":4,"./polyfills/Object":5,"./polyfills/String":6,"./polyfills/events":7,"./polyfills/hasOwnProperty":8,"./polyfills/pageOffset.js":9,"./polyfills/rAF.js":10,"./polyfills/whichIE":11}],2:[function(require,module,exports){
 
 module.exports = function(){
 
@@ -462,24 +463,53 @@ if (objCtr.defineProperty) {
 }
 
 },{}],4:[function(require,module,exports){
+// Use bind from https://github.com/es-shims/es5-shim/blob/master/es5-shim.js
+// This is because the MDN one does not work with React, as it does not tidy up the prototype
 
 module.exports = function(){
-
     if (!Function.prototype.bind) {
-        Function.prototype.bind = function (oThis) {
-            var aArgs = Array.prototype.slice.call(arguments, 1),
-                fToBind = this,
-                FNOP = function () {},
-                fBound = function () {
-                    return fToBind.apply(this instanceof FNOP && oThis ? this : oThis,
-                        aArgs.concat(Array.prototype.slice.call(arguments)));
-                };
-            FNOP.prototype = this.prototype;
-            fBound.prototype = new FNOP();
-            return fBound;
+        var Empty = function(){};
+        Function.prototype.bind = function bind(that) { // .length is 1
+            var target = this;
+            if (typeof target != "function") {
+                throw new TypeError("Function.prototype.bind called on incompatible " + target);
+            }
+            var args = Array.prototype.slice.call(arguments, 1); // for normal call
+            var binder = function () {
+                if (this instanceof bound) {
+                    var result = target.apply(
+                        this,
+                        args.concat(Array.prototype.slice.call(arguments))
+                    );
+                    if (Object(result) === result) {
+                      return result;
+                    }
+                    return this;
+                } else {
+                    return target.apply(
+                      that,
+                      args.concat(Array.prototype.slice.call(arguments))
+                    );
+                }
+            };
+            var boundLength = Math.max(0, target.length - args.length);
+            var boundArgs = [];
+            for (var i = 0; i < boundLength; i++) {
+                boundArgs.push("$" + i);
+            }
+            var bound = Function("binder", "return function(" + boundArgs.join(",") + "){return binder.apply(this,arguments)}")(binder);
+
+            if (target.prototype) {
+                Empty.prototype = target.prototype;
+                bound.prototype = new Empty();
+                // Clean up dangling references.
+                Empty.prototype = null;
+            }
+            return bound;
         };
     }
 };
+
 },{}],5:[function(require,module,exports){
 // From https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys
 module.exports = function() {
@@ -602,6 +632,38 @@ module.exports = function() {
 };
 
 },{}],10:[function(require,module,exports){
+// http://paulirish.com/2011/requestanimationframe-for-smart-animating/
+// http://my.opera.com/emoller/blog/2011/12/20/requestanimationframe-for-smart-er-animating
+
+// requestAnimationFrame polyfill by Erik Möller. fixes from Paul Irish and Tino Zijdel
+
+// MIT license
+
+module.exports = function() {
+    var lastTime = 0;
+    var vendors = ['ms', 'moz', 'webkit', 'o'];
+    for(var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
+        window.requestAnimationFrame = window[vendors[x]+'RequestAnimationFrame'];
+        window.cancelAnimationFrame = window[vendors[x]+'CancelAnimationFrame'] 
+                                   || window[vendors[x]+'CancelRequestAnimationFrame'];
+    }
+ 
+    if (!window.requestAnimationFrame)
+        window.requestAnimationFrame = function(callback, element) {
+            var currTime = new Date().getTime();
+            var timeToCall = Math.max(0, 16 - (currTime - lastTime));
+            var id = window.setTimeout(function() { callback(currTime + timeToCall); }, 
+              timeToCall);
+            lastTime = currTime + timeToCall;
+            return id;
+        };
+ 
+    if (!window.cancelAnimationFrame)
+        window.cancelAnimationFrame = function(id) {
+            clearTimeout(id);
+        };
+};
+},{}],11:[function(require,module,exports){
 
 module.exports = function() {
 
