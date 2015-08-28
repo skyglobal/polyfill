@@ -16,7 +16,7 @@ module.exports = {
         region: process.env.AWS_REGION,
         directoryPrefix: 'components/' //prefix your target release destination
     },
-    test: 'karma', //or mocha
+    test: false, //or mocha
     testConfig: { // where your tests config, specs and reports are saved
         root: './test',
         specs: './test/specs',
