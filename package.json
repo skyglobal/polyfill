@@ -10,9 +10,14 @@
     "es5-shim-sham": "0.0.1"
   },
   "devDependencies": {
-    "component-helper": "~0.8.8",
-    "findup-sync": "^0.2.1",
-    "gulp": "^3.8.9"
+    "browserify": "12.0.1",
+    "minifyify": "7.1.0"
+  },
+  "scripts": {
+    "build-require-js": "browserify src/scripts/polyfill.requirejs.js -p [minifyify --map polyfill.requirejs.map.json --output dist/polyfill.requirejs.map.json] -d -o dist/polyfill.requirejs.min.js",
+    "build-normal": "browserify src/scripts/polyfill.js -p [minifyify --map polyfill.map.json --output dist/polyfill.map.json] -d -o dist/polyfill.min.js",
+    "build": "rm -rf dist && mkdir dist && npm run build-require-js && npm run build-normal",
+    "version": "bash scripts/update-version.sh"
   },
   "engines": {
     "node": "0.10.31"
