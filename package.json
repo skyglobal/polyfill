@@ -18,8 +18,5 @@
     "build-normal": "browserify src/scripts/polyfill.js -p [minifyify --map polyfill.map.json --output dist/polyfill.map.json] -d -o dist/polyfill.min.js",
     "build": "rm -rf dist && mkdir dist && npm run build-require-js && npm run build-normal",
     "version": "bash scripts/update-version.sh"
-  },
-  "engines": {
-    "node": "0.10.31"
   }
 }
