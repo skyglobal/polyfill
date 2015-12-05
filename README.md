@@ -12,7 +12,17 @@ Include the Polyfill assets in your project either as **Static Resources**
 <script src="https://web-toolkit.global.sky.com/components/polyfill/0.4.1/polyfill.min.js"></script>
 ```
 
-or via **NPM**
+or via **NPM** (recommended)
+
+```sh
+npm install --save-dev git+ssh://git@github.com:skyglobal/polyfill.git#v0.4.1
+```
+
+you can then require it inside of your modules if you use a tool such as browserify or webpack
+
+```js
+require('polyfill/src/scripts/polyfill');
+```
 
 ## Contribution
 
