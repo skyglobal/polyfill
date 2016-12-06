@@ -6,9 +6,8 @@
     "url": "https://github.com/skyglobal/polyfil.git"
   },
   "dependencies": {
-    "es5-shim": "^4.1.1",
-    "es5-shim-sham": "0.0.1"
-  },
+    "es5-shim": "git+ssh://git@github.com/sky-uk/es5-shim"
+    },
   "devDependencies": {
     "browserify": "12.0.1",
     "minifyify": "7.1.0"
